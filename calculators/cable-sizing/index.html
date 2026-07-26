@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cable Sizing Calculator (IEC 60364-5-52) | Engineering Tool</title>
+    <meta name="description" content="Find the minimum cable cross-section based on current-carrying capacity per IEC 60364-5-52.">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="../../index.html" class="logo">Engineering Tool</a>
+        <nav>
+            <a href="../../index.html">Tools</a>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="../../index.html">Tools</a> / Cable Sizing Calculator
+    </div>
+
+    <div class="calculator-wrap">
+        <div class="calculator-card">
+            <div class="header">
+                <h1>Cable Sizing Calculator</h1>
+                <p>Minimum Cross-Section by Current-Carrying Capacity (IEC 60364-5-52)</p>
+            </div>
+
+            <form id="calcForm">
+                <div class="form-group">
+                    <label for="loadCurrent">Design Load Current (Ib)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="loadCurrent" value="32" step="0.1" required>
+                        <span class="unit">A</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="conductors">Circuit Type</label>
+                        <select id="conductors">
+                            <option value="3" selected>3-phase (3 loaded conductors)</option>
+                            <option value="2">Single-phase (2 loaded conductors)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="material">Conductor Material</label>
+                        <select id="material">
+                            <option value="Cu" selected>Copper (Cu)</option>
+                            <option value="Al">Aluminum (Al)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="method">Installation Method (IEC Reference Method)</label>
+                    <select id="method">
+                        <option value="A1">A1 — Conduit in insulated wall</option>
+                        <option value="B1" selected>B1 — Conduit on wall / in trunking</option>
+                        <option value="C">C — Clipped direct to surface</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="ambientTemp">Ambient Temperature</label>
+                        <select id="ambientTemp">
+                            <option value="10">10 °C</option>
+                            <option value="15">15 °C</option>
+                            <option value="20">20 °C</option>
+                            <option value="25">25 °C</option>
+                            <option value="30" selected>30 °C</option>
+                            <option value="35">35 °C</option>
+                            <option value="40">40 °C</option>
+                            <option value="45">45 °C</option>
+                            <option value="50">50 °C</option>
+                            <option value="55">55 °C</option>
+                            <option value="60">60 °C</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="grouping">Circuits Grouped Together</label>
+                        <select id="grouping">
+                            <option value="1" selected>1 (no grouping)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="button" onclick="calculate()">Calculate</button>
+            </form>
+
+            <div class="results" id="resultsBlock">
+                <label>Results</label>
+                <div class="result-box">
+                    <div class="result-item">
+                        <span>Minimum Cross-Section</span>
+                        <span class="result-value" id="resSection">—</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Corrected Capacity (Iz)</span>
+                        <span class="result-value" id="resIz">—</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Utilization (Ib / Iz)</span>
+                        <span class="result-value" id="resUtil">—</span>
+                    </div>
+                    <div id="statusBadge" class="status-badge"></div>
+                </div>
+            </div>
+
+            <p style="margin-top: 18px; font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; font-family: var(--font-mono);">
+                Indicative values based on typical IEC 60364-5-52 ampacity tables. Verify against the current standard for critical or regulated installations.
+            </p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        Engineering Tool — free, open calculation tools for electrical engineers.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
