@@ -630,7 +630,7 @@ button:hover {
 
 .feedback-section,
 .about-section {
-    margin-top: 72px;
+    margin-top: 48px;
 
     padding: 36px;
 
@@ -710,6 +710,14 @@ button:hover {
     font-size: 0.9rem;
 
     line-height: 1.7;
+
+    max-width: 760px;
+
+    margin-bottom: 18px;
+}
+
+.about-section p:last-of-type {
+    margin-bottom: 0;
 }
 
 
@@ -724,34 +732,6 @@ button:hover {
 .giscus-frame {
     width: 100%;
 }
-
-
-/* ---------- ABOUT SECTION ---------- */
-
-.about-section {
-    margin-top: 48px;
-}
-
-.about-section p {
-    max-width: 760px;
-
-    margin-bottom: 18px;
-}
-
-.feedback-note {
-    margin-top: 26px;
-
-    padding: 18px;
-
-    border-left: 3px solid var(--accent-color);
-
-    background-color: rgba(8, 22, 37, 0.5);
-}
-
-.feedback-note strong {
-    color: var(--text-color);
-}
-
 
 /* ---------- MOBILE ---------- */
 
