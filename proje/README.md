@@ -1,28 +1,28 @@
 # Engineering Tool
 
-Elektrik mühendisliği hesap makineleri — açık ve ücretsiz.
+Free, open electrical engineering calculators.
 
-## Klasör Yapısı
+## Folder Structure
 
 ```
-/proje-klasörü
-  index.html                     → Ana sayfa (tüm araçların listesi)
+/project-folder
+  index.html                     → Home page (lists all tools)
   /css
-    style.css                    → TÜM sayfaların kullandığı ortak stil
+    style.css                    → Shared style used by ALL pages
   /calculators
-    /gerilim-dusumu
-      index.html                 → Gerilim düşümü hesaplayıcı sayfası
-      script.js                  → Hesaplama mantığı (JavaScript)
-    /kablo-kesit                 → (yeni araç eklenince buraya benzer bir klasör açılır)
+    /voltage-drop
+      index.html                 → Voltage drop calculator page
+      script.js                  → Calculation logic (JavaScript)
+    /cable-sizing                → (a similar folder is added here for each new tool)
 ```
 
-## Yeni bir hesap makinesi eklemek istediğinde
+## Adding a new calculator
 
-1. `calculators/` içinde yeni bir klasör aç (örn. `calculators/kablo-kesit/`)
-2. İçine `index.html` ve `script.js` koy (gerilim-dusumu klasöründeki dosyaları kopyalayıp değiştirebilirsin)
-3. `<link rel="stylesheet" href="../../css/style.css">` satırını değiştirme — ortak stil oradan geliyor
-4. Ana sayfadaki (`index.html`) ilgili `tool-card` kutusunu `disabled` sınıfından çıkar ve linkini yeni sayfana yönlendir
+1. Create a new folder under `calculators/` (e.g. `calculators/cable-sizing/`)
+2. Add an `index.html` and `script.js` inside it (you can copy the files from the `voltage-drop` folder and modify them)
+3. Keep the line `<link rel="stylesheet" href="../../css/style.css">` — that's where the shared style comes from
+4. On the home page (`index.html`), remove the `disabled` class from the relevant `tool-card` and point its link to the new page
 
-## Ortak stili değiştirmek istediğinde
+## Changing the shared style
 
-Sadece `css/style.css` dosyasını düzenle — değişiklik otomatik olarak TÜM sayfalara yansır.
+Just edit `css/style.css` — the change automatically applies to ALL pages.
