@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Fazlı Gerilim Düşümü Hesaplayıcı (IEC) | Engineering Tool</title>
+    <meta name="description" content="3 fazlı sistemlerde IEC standardına göre gerilim düşümü hesaplama aracı.">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="../../index.html" class="logo">⚡ Engineering Tool</a>
+        <nav>
+            <a href="../../index.html">Araçlar</a>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="../../index.html">Araçlar</a> / Gerilim Düşümü Hesaplayıcı
+    </div>
+
+    <div class="calculator-wrap">
+        <div class="calculator-card">
+            <div class="header">
+                <h1>⚡ Voltage Drop Calculator</h1>
+                <p>3 Fazlı Sistemler İçin Gerilim Düşümü Hesabı (IEC Standardı)</p>
+            </div>
+
+            <form id="calcForm">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="voltage">Sistem Gerilimi (V)</label>
+                        <input type="number" id="voltage" value="400" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="current">Çekilen Akım (I)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="current" value="50" step="0.1" required>
+                            <span class="unit">A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="length">Hattın Uzunluğu (L)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="length" value="100" required>
+                            <span class="unit">m</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cosPhi">Güç Faktörü (Cos φ)</label>
+                        <input type="number" id="cosPhi" value="0.8" step="0.01" min="0.1" max="1" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="conductor">İletken Malzemesi</label>
+                        <select id="conductor">
+                            <option value="56">Bakır (Cu)</option>
+                            <option value="35">Alüminyum (Al)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="section">Kablo Kesiti (S)</label>
+                        <select id="section">
+                            <option value="2.5">2.5 mm²</option>
+                            <option value="4">4 mm²</option>
+                            <option value="6">6 mm²</option>
+                            <option value="10">10 mm²</option>
+                            <option value="16" selected>16 mm²</option>
+                            <option value="25">25 mm²</option>
+                            <option value="35">35 mm²</option>
+                            <option value="50">50 mm²</option>
+                            <option value="70">70 mm²</option>
+                            <option value="95">95 mm²</option>
+                            <option value="120">120 mm²</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="button" onclick="calculate()">Hesapla</button>
+            </form>
+
+            <div class="results" id="resultsBlock">
+                <label>Hesaplama Sonuçları</label>
+                <div class="result-box">
+                    <div class="result-item">
+                        <span>Gerilim Düşümü (ΔU):</span>
+                        <span class="result-value" id="resVoltDrop">0 V</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Yüzde Düşüm (% e):</span>
+                        <span class="result-value" id="resPercentDrop">%0</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Yükteki Gerilim:</span>
+                        <span class="result-value" id="resEndVolt">0 V</span>
+                    </div>
+                    <div id="statusBadge" class="status-badge"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        Engineering Tool — elektrik mühendisleri için açık ve ücretsiz hesap araçları.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
