@@ -1,34 +1,47 @@
 /* ============================================
-   ENGINEERING TOOL — ORTAK STİL DOSYASI
-   Tüm sayfalar bu dosyayı kullanır, böylece
-   tek bir yerden tüm sitenin görünümünü
-   değiştirebilirsin.
+   ENGINEERING TOOL — SHARED STYLESHEET
+   "Blueprint" design identity: technical drawing
+   paper, title blocks, instrument-readout numerals.
    ============================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 :root {
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
-    --card-bg-hover: #253449;
-    --text-color: #f8fafc;
-    --text-muted: #94a3b8;
-    --accent-color: #38bdf8;
-    --accent-hover: #0284c7;
-    --border-color: #334155;
-    --success-color: #22c55e;
-    --warning-color: #ef4444;
+    --bg-color: #0b1e33;
+    --bg-color-deep: #081625;
+    --card-bg: #12283f;
+    --card-bg-hover: #163149;
+    --panel-bg: #081625;
+    --text-color: #eaf2fa;
+    --text-muted: #7b93ab;
+    --accent-color: #f5a623;
+    --accent-hover: #d68c0f;
+    --border-color: #23415e;
+    --border-color-strong: #35577a;
+    --success-color: #4ade80;
+    --warning-color: #f8674f;
+    --grid-line: rgba(234, 242, 250, 0.035);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-body);
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
+    background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
 }
 
 a {
@@ -36,31 +49,47 @@ a {
     text-decoration: none;
 }
 
-/* ---------- SİTE GENELİ HEADER ---------- */
+h1, h2, h3 {
+    font-family: var(--font-display);
+}
+
+/* ---------- SITE HEADER ---------- */
 
 .site-header {
     border-bottom: 1px solid var(--border-color);
-    padding: 16px 24px;
+    padding: 18px 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
+    background-color: rgba(8, 22, 37, 0.6);
+    backdrop-filter: blur(6px);
 }
 
 .site-header .logo {
-    font-size: 1.2rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--text-color);
     display: flex;
     align-items: center;
     gap: 8px;
+    letter-spacing: 0.01em;
+}
+
+.site-header .logo::before {
+    content: "⚡";
+    color: var(--accent-color);
 }
 
 .site-header nav {
     display: flex;
-    gap: 20px;
-    font-size: 0.9rem;
+    gap: 24px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     color: var(--text-muted);
 }
 
@@ -69,103 +98,177 @@ a {
 }
 
 .breadcrumb {
-    padding: 12px 24px;
-    font-size: 0.85rem;
+    padding: 14px 28px;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
     color: var(--text-muted);
+    letter-spacing: 0.02em;
 }
 
 .breadcrumb a:hover {
     color: var(--accent-color);
 }
 
-/* ---------- SİTE GENELİ FOOTER ---------- */
+/* ---------- SITE FOOTER ---------- */
 
 .site-footer {
     border-top: 1px solid var(--border-color);
-    padding: 20px 24px;
+    padding: 24px 28px;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
     color: var(--text-muted);
-    margin-top: 40px;
+    margin-top: 48px;
 }
 
-/* ---------- ANA SAYFA / ARAÇ KARTLARI ---------- */
+/* ---------- HOME PAGE / TITLE BLOCK HERO ---------- */
 
 .page-wrap {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 24px;
+    padding: 56px 28px;
 }
 
 .hero {
-    text-align: center;
-    margin-bottom: 40px;
+    border: 1px solid var(--border-color-strong);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    background-color: rgba(18, 40, 63, 0.4);
 }
 
-.hero h1 {
-    font-size: 2rem;
+.hero .hero-text h1 {
+    font-size: 2.1rem;
     color: var(--text-color);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    line-height: 1.15;
 }
 
-.hero p {
+.hero .hero-text p {
     color: var(--text-muted);
-    font-size: 1rem;
-    max-width: 560px;
-    margin: 0 auto;
+    font-size: 0.98rem;
+    max-width: 480px;
+    line-height: 1.5;
 }
+
+.hero .title-block {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    border: 1px solid var(--border-color-strong);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+
+.hero .title-block div {
+    padding: 6px 14px;
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.hero .title-block div:nth-child(even) {
+    border-right: none;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.hero .title-block div:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+
+/* ---------- TOOL CARDS ---------- */
 
 .tool-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
+    gap: 18px;
 }
 
 .tool-card {
+    position: relative;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 20px;
-    transition: border-color 0.2s, transform 0.15s, background-color 0.2s;
+    border-radius: 2px;
+    padding: 22px;
+    transition: border-color 0.2s, background-color 0.2s;
     display: block;
 }
 
+.tool-card::before,
+.tool-card::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--border-color-strong);
+    transition: border-color 0.2s;
+}
+
+.tool-card::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+}
+
+.tool-card::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+}
+
 .tool-card:hover {
-    border-color: var(--accent-color);
+    border-color: var(--border-color);
     background-color: var(--card-bg-hover);
-    transform: translateY(-2px);
+}
+
+.tool-card:hover::before,
+.tool-card:hover::after {
+    border-color: var(--accent-color);
 }
 
 .tool-card .icon {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
     display: block;
 }
 
 .tool-card h3 {
-    font-size: 1.05rem;
-    margin-bottom: 6px;
+    font-size: 1.02rem;
+    margin-bottom: 8px;
     color: var(--text-color);
+    font-weight: 600;
 }
 
 .tool-card p {
     font-size: 0.85rem;
     color: var(--text-muted);
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
 .tool-card .tag {
     display: inline-block;
-    margin-top: 10px;
-    font-size: 0.7rem;
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
-    border-radius: 999px;
-    padding: 2px 8px;
+    border-radius: 2px;
+    padding: 3px 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .tool-card.disabled {
-    opacity: 0.5;
+    opacity: 0.45;
     pointer-events: none;
 }
 
@@ -174,54 +277,64 @@ a {
     border-color: var(--text-muted);
 }
 
-/* ---------- HESAP MAKİNESİ KARTI (calculator-card) ---------- */
+/* ---------- CALCULATOR CARD ---------- */
 
 .calculator-wrap {
     display: flex;
     justify-content: center;
-    padding: 40px 20px;
+    padding: 48px 20px;
 }
 
 .calculator-card {
+    position: relative;
     background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border: 1px solid var(--border-color-strong);
+    border-radius: 2px;
     width: 100%;
     max-width: 500px;
-    padding: 28px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
 }
 
 .header {
-    margin-bottom: 24px;
+    margin-bottom: 26px;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 12px;
+    padding-bottom: 14px;
 }
 
 .header h1 {
-    font-size: 1.4rem;
-    color: var(--accent-color);
+    font-size: 1.3rem;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 600;
+}
+
+.header h1::before {
+    content: "⚡";
+    color: var(--accent-color);
 }
 
 .header p {
-    font-size: 0.85rem;
+    font-size: 0.83rem;
+    font-family: var(--font-mono);
     color: var(--text-muted);
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .form-group {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    margin-bottom: 6px;
-    color: var(--text-color);
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .input-wrapper {
@@ -231,12 +344,13 @@ label {
 
 input, select {
     width: 100%;
-    padding: 10px 12px;
-    background-color: var(--bg-color);
+    padding: 11px 12px;
+    background-color: var(--panel-bg);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 2px;
     color: var(--text-color);
-    font-size: 0.95rem;
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
     outline: none;
     transition: border-color 0.2s;
 }
@@ -248,7 +362,8 @@ input:focus, select:focus {
 .unit {
     margin-left: -40px;
     padding-right: 12px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
     color: var(--text-muted);
     pointer-events: none;
 }
@@ -264,15 +379,17 @@ input:focus, select:focus {
 
 button {
     width: 100%;
-    padding: 12px;
+    padding: 13px;
     background-color: var(--accent-color);
-    color: #0f172a;
+    color: #0b1e33;
     font-weight: 700;
+    font-family: var(--font-display);
     border: none;
-    border-radius: 6px;
+    border-radius: 2px;
     cursor: pointer;
-    font-size: 1rem;
-    margin-top: 8px;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    margin-top: 10px;
     transition: background-color 0.2s;
 }
 
@@ -280,9 +397,11 @@ button:hover {
     background-color: var(--accent-hover);
 }
 
+/* ---------- RESULTS — "INSTRUMENT READOUT" PANEL ---------- */
+
 .results {
-    margin-top: 24px;
-    padding-top: 16px;
+    margin-top: 26px;
+    padding-top: 18px;
     border-top: 1px solid var(--border-color);
     display: none;
 }
@@ -291,19 +410,26 @@ button:hover {
     display: block;
 }
 
+.results > label {
+    margin-bottom: 8px;
+}
+
 .result-box {
-    background-color: var(--bg-color);
-    border-radius: 8px;
-    padding: 16px;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    padding: 18px;
     margin-top: 8px;
-    border-left: 4px solid var(--accent-color);
+    border-left: 3px solid var(--accent-color);
 }
 
 .result-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
+    align-items: baseline;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 .result-item:last-child {
@@ -311,30 +437,47 @@ button:hover {
 }
 
 .result-value {
+    font-family: var(--font-mono);
     font-weight: 700;
+    font-size: 1.05rem;
     color: var(--accent-color);
+    letter-spacing: 0.01em;
 }
 
 .status-badge {
     display: inline-block;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     font-weight: 700;
-    margin-top: 8px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .status-pass {
-    background-color: rgba(34, 197, 94, 0.2);
+    background-color: rgba(74, 222, 128, 0.12);
     color: var(--success-color);
+    border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .status-fail {
-    background-color: rgba(239, 68, 68, 0.2);
+    background-color: rgba(248, 103, 79, 0.12);
     color: var(--warning-color);
+    border: 1px solid rgba(248, 103, 79, 0.3);
 }
 
-/* ---------- MOBİL UYUM ---------- */
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 640px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+    .hero .title-block {
+        font-size: 0.68rem;
+    }
+}
 
 @media (max-width: 480px) {
     .row {
