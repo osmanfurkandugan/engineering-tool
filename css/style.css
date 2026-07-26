@@ -155,6 +155,15 @@ h1, h2, h3 {
     line-height: 1.5;
 }
 
+.hero .hero-text p.mission {
+    font-size: 0.82rem;
+    max-width: 520px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+    line-height: 1.6;
+}
+
 .hero .title-block {
     display: grid;
     grid-template-columns: repeat(2, auto);

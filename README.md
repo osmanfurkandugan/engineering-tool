@@ -1,4 +1,4 @@
-# Engineering Tool
+# Electrical Tool
 
 Free, open electrical engineering calculators.
 
