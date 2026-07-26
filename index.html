@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Electrical Tool</title>
-    <meta name="description" content="Free, IEC-compliant online calculators for electrical engineers, built in the open by an electrical engineer with the help of AI.">
+
+    <meta
+        name="description"
+        content="Free, IEC-compliant online calculators for electrical engineers, built in the open by an electrical engineer with the help of AI."
+    >
+
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <header class="site-header">
+
         <div class="logo">
-            <img src="assets/logo.svg" class="logo-icon" alt="Electrical Tool logo">
+            <img
+                src="assets/logo.svg"
+                class="logo-icon"
+                alt="Electrical Tool logo"
+            >
+
             Electrical Tool
         </div>
 
@@ -21,142 +34,220 @@
             <a href="#about">About</a>
             <a href="#feedback">Feedback</a>
         </nav>
+
     </header>
+
 
     <div class="page-wrap">
 
+
+        <!-- HERO SECTION -->
+
         <div class="hero">
+
             <div class="hero-text">
+
                 <h1>Electrical Engineering Calculators</h1>
 
                 <p class="mission">
-                    Electrical Tool is built by an electrical engineer, with the help of AI, to give students and enthusiasts free access to core electrical engineering calculators. The goal is to grow this into a community project — shaped by user feedback, with new tools and improvements added based on what people here actually need.
+                    Electrical Tool is built by an electrical engineer, with the help of AI,
+                    to give students and enthusiasts free access to core electrical engineering
+                    calculators. The goal is to grow this into a community project — shaped by
+                    user feedback, with new tools and improvements added based on what people
+                    here actually need.
                 </p>
+
             </div>
 
+
             <div class="title-block">
-                <div>Standard</div><div>IEC</div>
-                <div>Status</div><div>Live</div>
-                <div>Access</div><div>Free</div>
+
+                <div>Standard</div>
+                <div>IEC</div>
+
+                <div>Status</div>
+                <div>Live</div>
+
+                <div>Access</div>
+                <div>Free</div>
+
             </div>
+
         </div>
+
+
+        <!-- TOOLS SECTION -->
 
         <div class="tool-grid">
 
-            <a href="calculators/voltage-drop/index.html" class="tool-card">
+
+            <a
+                href="calculators/voltage-drop/index.html"
+                class="tool-card"
+            >
+
                 <span class="icon">⚡</span>
+
                 <h3>Voltage Drop Calculator</h3>
-                <p>Calculates voltage drop and percentage deviation across a cable in 3-phase systems.</p>
+
+                <p>
+                    Calculates voltage drop and percentage deviation
+                    across a cable in 3-phase systems.
+                </p>
+
                 <span class="tag">IEC</span>
+
             </a>
 
-            <a href="calculators/cable-sizing/index.html" class="tool-card">
+
+            <a
+                href="calculators/cable-sizing/index.html"
+                class="tool-card"
+            >
+
                 <span class="icon">🔌</span>
+
                 <h3>Cable Sizing</h3>
-                <p>Determines the minimum cable cross-section based on current-carrying capacity.</p>
+
+                <p>
+                    Determines the minimum cable cross-section
+                    based on current-carrying capacity.
+                </p>
+
                 <span class="tag">IEC</span>
+
             </a>
 
-            <div class="tool-card disabled">
-                <span class="icon">💥</span>
-                <h3>Short-Circuit Current</h3>
-                <p>Calculates short-circuit current and equipment ratings per IEC 60909.</p>
-                <span class="tag">Coming Soon</span>
-            </div>
 
             <div class="tool-card disabled">
-                <span class="icon">📐</span>
-                <h3>Power Factor Correction</h3>
-                <p>Calculates capacitor sizing for reactive power compensation.</p>
+
+                <span class="icon">💥</span>
+
+                <h3>Short-Circuit Current</h3>
+
+                <p>
+                    Calculates short-circuit current and equipment
+                    ratings per IEC 60909.
+                </p>
+
                 <span class="tag">Coming Soon</span>
+
             </div>
+
+
+            <div class="tool-card disabled">
+
+                <span class="icon">📐</span>
+
+                <h3>Power Factor Correction</h3>
+
+                <p>
+                    Calculates capacitor sizing for reactive
+                    power compensation.
+                </p>
+
+                <span class="tag">Coming Soon</span>
+
+            </div>
+
 
         </div>
 
+
         <!-- FEEDBACK SECTION -->
-        <section class="feedback-section" id="feedback">
+
+        <section
+            class="feedback-section"
+            id="feedback"
+        >
+
 
             <div class="feedback-header">
-                <span class="section-label">COMMUNITY INPUT</span>
 
-                <h2>Help Us Improve</h2>
+                <span class="section-label">
+                    COMMUNITY INPUT
+                </span>
+
+
+                <h2>
+                    Help Us Improve
+                </h2>
+
 
                 <p>
-                    Your feedback matters to us. If you have an idea for a new calculator,
-                    notice an error, or have a suggestion for improving an existing tool,
-                    we would love to hear from you.
+                    Your feedback matters to us. Have an idea for a new calculator,
+                    found an error, or have a suggestion for improving an existing tool?
+                    Join the discussion and help us improve Electrical Tool.
                 </p>
+
             </div>
 
-            <form class="feedback-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 
-                <div class="form-group">
-                    <label for="feedback-type">Feedback Type</label>
+            <!-- GISCUS COMMENTS -->
 
-                    <select id="feedback-type" name="feedback_type" required>
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="new-calculator">Suggest a New Calculator</option>
-                        <option value="error-report">Report an Error</option>
-                        <option value="improvement">Suggest an Improvement</option>
-                        <option value="general-feedback">General Feedback</option>
-                    </select>
-                </div>
+            <div class="giscus"></div>
 
-                <div class="form-group">
-                    <label for="feedback-message">Your Message</label>
 
-                    <textarea
-                        id="feedback-message"
-                        name="message"
-                        rows="6"
-                        placeholder="Tell us what you think..."
-                        required
-                    ></textarea>
-                </div>
+            <script
+                src="https://giscus.app/client.js"
+                data-repo="osmanfurkandugan/engineering-tool"
+                data-repo-id="R_kgDOTjwidw"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOTjwid84DCAAy"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+            </script>
 
-                <div class="form-group">
-                    <label for="feedback-email">
-                        Email <span class="optional">(optional)</span>
-                    </label>
-
-                    <input
-                        type="email"
-                        id="feedback-email"
-                        name="email"
-                        placeholder="your@email.com"
-                    >
-                </div>
-
-                <button type="submit">Send Feedback</button>
-
-            </form>
 
         </section>
 
+
         <!-- ABOUT SECTION -->
-        <section class="about-section" id="about">
 
-            <span class="section-label">ABOUT THE PROJECT</span>
+        <section
+            class="about-section"
+            id="about"
+        >
 
-            <h2>Built for Practical Engineering</h2>
+
+            <span class="section-label">
+                ABOUT THE PROJECT
+            </span>
+
+
+            <h2>
+                Built for Practical Engineering
+            </h2>
+
 
             <p>
-                Engineering Tool is a growing collection of practical calculators
+                Electrical Tool is a growing collection of practical calculators
                 and tools designed for electrical engineers, technicians, students,
                 and anyone working with electrical systems.
             </p>
 
+
             <p>
-                Our goal is simple: to make engineering calculations faster, clearer,
-                and more accessible.
+                Our goal is simple: to make engineering calculations faster,
+                clearer, and more accessible.
             </p>
+
 
             <p>
                 From voltage drop calculations to cable sizing, power systems,
                 transformers, and other electrical engineering applications,
-                Engineering Tool aims to provide reliable and easy-to-use tools
+                Electrical Tool aims to provide reliable and easy-to-use tools
                 for everyday engineering work.
             </p>
+
 
             <p>
                 We believe that engineering tools should be practical, intuitive,
@@ -164,37 +255,51 @@
                 that help users get the information they need without unnecessary complexity.
             </p>
 
+
             <p>
-                Engineering Tool is continuously evolving, with new calculators
+                Electrical Tool is continuously evolving, with new calculators
                 and features being added over time.
             </p>
 
+
             <p>
-                Whether you are a professional engineer checking a design, a technician
-                working on an electrical installation, or a student learning the
-                fundamentals of electrical engineering, we hope Engineering Tool
-                can make your work a little easier.
+                Whether you are a professional engineer checking a design,
+                a technician working on an electrical installation,
+                or a student learning the fundamentals of electrical engineering,
+                we hope Electrical Tool can make your work a little easier.
             </p>
+
 
             <p class="feedback-note">
-                <strong>Your feedback matters to us.</strong>
-                If you have suggestions for new calculators, ideas for improving
-                existing tools, or notice an error, we would love to hear from you.
-                Your feedback helps us improve Engineering Tool and build tools
-                that are genuinely useful for the engineering community.
+
+                <strong>
+                    Your feedback matters to us.
+                </strong>
+
+                If you have suggestions for new calculators,
+                ideas for improving existing tools,
+                or notice an error, we would love to hear from you.
+
+                Your feedback helps us improve Electrical Tool
+                and build tools that are genuinely useful
+                for the engineering community.
+
             </p>
 
-            <p class="about-signoff">
-                <strong>Built for engineers. Designed for practical work.</strong>
-            </p>
 
         </section>
 
+
     </div>
 
+
     <footer class="site-footer">
-        Electrical Tool — free, open calculation tools for electrical engineers.
+
+        Electrical Tool — free, open calculation tools
+        for electrical engineers.
+
     </footer>
+
 
 </body>
 </html>

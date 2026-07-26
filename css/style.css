@@ -1,5 +1,5 @@
 /* ============================================
-   ENGINEERING TOOL — SHARED STYLESHEET
+   ELECTRICAL TOOL — SHARED STYLESHEET
    "Blueprint" design identity: technical drawing
    paper, title blocks, instrument-readout numerals.
    ============================================ */
@@ -38,9 +38,11 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
+
     background-image:
         linear-gradient(var(--grid-line) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+
     background-size: 32px 32px;
 }
 
@@ -49,20 +51,26 @@ a {
     text-decoration: none;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: var(--font-display);
 }
+
 
 /* ---------- SITE HEADER ---------- */
 
 .site-header {
     border-bottom: 1px solid var(--border-color);
     padding: 18px 28px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     flex-wrap: wrap;
     gap: 12px;
+
     background-color: rgba(8, 22, 37, 0.6);
     backdrop-filter: blur(6px);
 }
@@ -71,10 +79,13 @@ h1, h2, h3 {
     font-family: var(--font-display);
     font-size: 1.15rem;
     font-weight: 700;
+
     color: var(--text-color);
+
     display: flex;
     align-items: center;
     gap: 9px;
+
     letter-spacing: 0.01em;
 }
 
@@ -87,10 +98,13 @@ h1, h2, h3 {
 .site-header nav {
     display: flex;
     gap: 24px;
+
     font-size: 0.82rem;
     font-weight: 500;
+
     text-transform: uppercase;
     letter-spacing: 0.06em;
+
     color: var(--text-muted);
 }
 
@@ -98,10 +112,15 @@ h1, h2, h3 {
     color: var(--accent-color);
 }
 
+
+/* ---------- BREADCRUMB ---------- */
+
 .breadcrumb {
     padding: 14px 28px;
+
     font-size: 0.8rem;
     font-family: var(--font-mono);
+
     color: var(--text-muted);
     letter-spacing: 0.02em;
 }
@@ -110,19 +129,26 @@ h1, h2, h3 {
     color: var(--accent-color);
 }
 
+
 /* ---------- SITE FOOTER ---------- */
 
 .site-footer {
     border-top: 1px solid var(--border-color);
+
     padding: 24px 28px;
+
     text-align: center;
+
     font-size: 0.78rem;
     font-family: var(--font-mono);
+
     color: var(--text-muted);
+
     margin-top: 48px;
 }
 
-/* ---------- HOME PAGE / TITLE BLOCK HERO ---------- */
+
+/* ---------- HOME PAGE / HERO ---------- */
 
 .page-wrap {
     max-width: 1100px;
@@ -133,57 +159,78 @@ h1, h2, h3 {
 .hero {
     border: 1px solid var(--border-color-strong);
     border-radius: 4px;
+
     padding: 32px;
     margin-bottom: 48px;
+
     display: grid;
     grid-template-columns: 1fr auto;
+
     gap: 24px;
     align-items: end;
+
     background-color: rgba(18, 40, 63, 0.4);
 }
 
 .hero .hero-text h1 {
     font-size: 2.1rem;
+
     color: var(--text-color);
+
     margin-bottom: 10px;
+
     line-height: 1.15;
 }
 
 .hero .hero-text p {
     color: var(--text-muted);
+
     font-size: 0.98rem;
+
     max-width: 480px;
+
     line-height: 1.5;
 }
 
 .hero .hero-text p.mission {
     font-size: 0.88rem;
+
     max-width: 520px;
+
     line-height: 1.6;
+
     color: var(--text-muted);
 }
 
 .hero .title-block {
     display: grid;
     grid-template-columns: repeat(2, auto);
+
     border: 1px solid var(--border-color-strong);
+
     font-family: var(--font-mono);
     font-size: 0.72rem;
+
     white-space: nowrap;
 }
 
 .hero .title-block div {
     padding: 6px 14px;
+
     border-bottom: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
+
     color: var(--text-muted);
+
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
 
 .hero .title-block div:nth-child(even) {
     border-right: none;
+
     color: var(--text-color);
+
     font-weight: 500;
 }
 
@@ -191,37 +238,55 @@ h1, h2, h3 {
     border-bottom: none;
 }
 
+
 /* ---------- TOOL CARDS ---------- */
 
 .tool-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(260px, 1fr)
+    );
+
     gap: 18px;
 }
 
 .tool-card {
     position: relative;
+
     background-color: var(--card-bg);
+
     border: 1px solid var(--border-color);
     border-radius: 2px;
+
     padding: 22px;
-    transition: border-color 0.2s, background-color 0.2s;
+
+    transition:
+        border-color 0.2s,
+        background-color 0.2s;
+
     display: block;
 }
 
 .tool-card::before,
 .tool-card::after {
     content: "";
+
     position: absolute;
+
     width: 10px;
     height: 10px;
+
     border-color: var(--border-color-strong);
+
     transition: border-color 0.2s;
 }
 
 .tool-card::before {
     top: -1px;
     left: -1px;
+
     border-top: 2px solid;
     border-left: 2px solid;
 }
@@ -229,6 +294,7 @@ h1, h2, h3 {
 .tool-card::after {
     bottom: -1px;
     right: -1px;
+
     border-bottom: 2px solid;
     border-right: 2px solid;
 }
@@ -245,32 +311,45 @@ h1, h2, h3 {
 
 .tool-card .icon {
     font-size: 1.5rem;
+
     margin-bottom: 12px;
+
     display: block;
 }
 
 .tool-card h3 {
     font-size: 1.02rem;
+
     margin-bottom: 8px;
+
     color: var(--text-color);
+
     font-weight: 600;
 }
 
 .tool-card p {
     font-size: 0.85rem;
+
     color: var(--text-muted);
+
     line-height: 1.45;
 }
 
 .tool-card .tag {
     display: inline-block;
+
     margin-top: 12px;
+
     font-family: var(--font-mono);
     font-size: 0.68rem;
+
     color: var(--accent-color);
+
     border: 1px solid var(--accent-color);
     border-radius: 2px;
+
     padding: 3px 8px;
+
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -285,49 +364,66 @@ h1, h2, h3 {
     border-color: var(--text-muted);
 }
 
+
 /* ---------- CALCULATOR CARD ---------- */
 
 .calculator-wrap {
     display: flex;
     justify-content: center;
+
     padding: 48px 20px;
 }
 
 .calculator-card {
     position: relative;
+
     background-color: var(--card-bg);
+
     border: 1px solid var(--border-color-strong);
     border-radius: 2px;
+
     width: 100%;
     max-width: 500px;
+
     padding: 30px;
+
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
 }
 
 .header {
     margin-bottom: 26px;
+
     border-bottom: 1px solid var(--border-color);
+
     padding-bottom: 14px;
 }
 
 .header h1 {
     font-size: 1.3rem;
+
     color: var(--text-color);
+
     display: flex;
     align-items: center;
+
     gap: 8px;
+
     font-weight: 600;
 }
 
 .header h1::before {
     content: "⚡";
+
     color: var(--accent-color);
 }
 
 .header p {
     font-size: 0.83rem;
+
     font-family: var(--font-mono);
+
     color: var(--text-muted);
+
     margin-top: 6px;
 }
 
@@ -337,10 +433,14 @@ h1, h2, h3 {
 
 label {
     display: block;
+
     font-size: 0.72rem;
     font-weight: 600;
+
     margin-bottom: 8px;
+
     color: var(--text-muted);
+
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -350,29 +450,42 @@ label {
     align-items: center;
 }
 
-input, select {
+input,
+select {
     width: 100%;
+
     padding: 11px 12px;
+
     background-color: var(--panel-bg);
+
     border: 1px solid var(--border-color);
     border-radius: 2px;
+
     color: var(--text-color);
+
     font-family: var(--font-mono);
     font-size: 0.92rem;
+
     outline: none;
+
     transition: border-color 0.2s;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
     border-color: var(--accent-color);
 }
 
 .unit {
     margin-left: -40px;
     padding-right: 12px;
+
     font-size: 0.8rem;
+
     font-family: var(--font-mono);
+
     color: var(--text-muted);
+
     pointer-events: none;
 }
 
@@ -387,17 +500,28 @@ input:focus, select:focus {
 
 button {
     width: 100%;
+
     padding: 13px;
+
     background-color: var(--accent-color);
+
     color: #0b1e33;
+
     font-weight: 700;
+
     font-family: var(--font-display);
+
     border: none;
     border-radius: 2px;
+
     cursor: pointer;
+
     font-size: 0.95rem;
+
     letter-spacing: 0.02em;
+
     margin-top: 10px;
+
     transition: background-color 0.2s;
 }
 
@@ -405,12 +529,16 @@ button:hover {
     background-color: var(--accent-hover);
 }
 
-/* ---------- RESULTS — "INSTRUMENT READOUT" PANEL ---------- */
+
+/* ---------- RESULTS / INSTRUMENT READOUT ---------- */
 
 .results {
     margin-top: 26px;
+
     padding-top: 18px;
+
     border-top: 1px solid var(--border-color);
+
     display: none;
 }
 
@@ -424,19 +552,27 @@ button:hover {
 
 .result-box {
     background-color: var(--panel-bg);
+
     border: 1px solid var(--border-color);
     border-radius: 2px;
+
     padding: 18px;
+
     margin-top: 8px;
+
     border-left: 3px solid var(--accent-color);
 }
 
 .result-item {
     display: flex;
+
     justify-content: space-between;
     align-items: baseline;
+
     margin-bottom: 10px;
+
     font-size: 0.85rem;
+
     color: var(--text-muted);
 }
 
@@ -446,61 +582,62 @@ button:hover {
 
 .result-value {
     font-family: var(--font-mono);
+
     font-weight: 700;
+
     font-size: 1.05rem;
+
     color: var(--accent-color);
+
     letter-spacing: 0.01em;
 }
 
 .status-badge {
     display: inline-block;
+
     padding: 5px 10px;
+
     border-radius: 2px;
+
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 700;
+
     margin-top: 10px;
+
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
 
 .status-pass {
     background-color: rgba(74, 222, 128, 0.12);
+
     color: var(--success-color);
+
     border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .status-fail {
     background-color: rgba(248, 103, 79, 0.12);
+
     color: var(--warning-color);
+
     border: 1px solid rgba(248, 103, 79, 0.3);
 }
 
-/* ---------- MOBILE ---------- */
 
-@media (max-width: 640px) {
-    .hero {
-        grid-template-columns: 1fr;
-    }
-    .hero .title-block {
-        font-size: 0.68rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .row {
-        flex-direction: column;
-        gap: 0;
-    }
-}
 /* ---------- FEEDBACK & ABOUT SECTIONS ---------- */
 
 .feedback-section,
 .about-section {
     margin-top: 72px;
+
     padding: 36px;
+
     border: 1px solid var(--border-color-strong);
+
     background-color: rgba(18, 40, 63, 0.4);
+
     position: relative;
 }
 
@@ -509,9 +646,12 @@ button:hover {
 .about-section::before,
 .about-section::after {
     content: "";
+
     position: absolute;
+
     width: 12px;
     height: 12px;
+
     border-color: var(--border-color-strong);
 }
 
@@ -519,6 +659,7 @@ button:hover {
 .about-section::before {
     top: -1px;
     left: -1px;
+
     border-top: 2px solid;
     border-left: 2px solid;
 }
@@ -527,107 +668,65 @@ button:hover {
 .about-section::after {
     bottom: -1px;
     right: -1px;
+
     border-bottom: 2px solid;
     border-right: 2px solid;
 }
 
 .feedback-header {
     max-width: 650px;
+
     margin-bottom: 28px;
 }
 
 .section-label {
     display: block;
+
     margin-bottom: 10px;
+
     font-family: var(--font-mono);
     font-size: 0.68rem;
+
     color: var(--accent-color);
+
     letter-spacing: 0.08em;
+
     text-transform: uppercase;
 }
 
 .feedback-section h2,
 .about-section h2 {
     font-size: 1.65rem;
+
     margin-bottom: 12px;
+
     color: var(--text-color);
 }
 
 .feedback-header p,
 .about-section p {
     color: var(--text-muted);
+
     font-size: 0.9rem;
+
     line-height: 1.7;
 }
 
-/* ---------- FEEDBACK FORM ---------- */
 
-.feedback-form {
-    max-width: 650px;
-}
+/* ---------- GISCUS COMMENTS ---------- */
 
-.feedback-form .form-group {
-    margin-bottom: 20px;
-}
-
-.feedback-form label {
-    margin-bottom: 8px;
-}
-
-.feedback-form input,
-.feedback-form select,
-.feedback-form textarea {
+.giscus {
     width: 100%;
-    padding: 12px;
-    background-color: var(--panel-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 2px;
-    color: var(--text-color);
-    font-family: var(--font-mono);
-    font-size: 0.88rem;
-    outline: none;
-    transition: border-color 0.2s;
+
+    margin-top: 32px;
 }
 
-.feedback-form textarea {
-    resize: vertical;
-    min-height: 130px;
-    line-height: 1.5;
+.giscus-frame {
+    width: 100%;
 }
 
-.feedback-form input:focus,
-.feedback-form select:focus,
-.feedback-form textarea:focus {
-    border-color: var(--accent-color);
-}
 
-.feedback-form select option {
-    background-color: var(--panel-bg);
-    color: var(--text-color);
-}
-
-.feedback-form button {
-    max-width: 220px;
-    margin-top: 4px;
-}
-
-.optional {
-    color: var(--text-muted);
-    font-weight: 400;
-    text-transform: lowercase;
-    letter-spacing: normal;
-}
-
-.feedback-note {
-    margin-top: 26px;
-    padding: 18px;
-    border-left: 3px solid var(--accent-color);
-    background-color: rgba(8, 22, 37, 0.5);
-}
-
-.feedback-note strong {
-    color: var(--text-color);
-}
+/* ---------- ABOUT SECTION ---------- */
 
 .about-section {
     margin-top: 48px;
@@ -635,19 +734,36 @@ button:hover {
 
 .about-section p {
     max-width: 760px;
+
     margin-bottom: 18px;
 }
 
-.about-section .about-signoff {
-    margin-top: 28px;
-    margin-bottom: 0;
-    color: var(--text-color);
-    font-family: var(--font-display);
+.feedback-note {
+    margin-top: 26px;
+
+    padding: 18px;
+
+    border-left: 3px solid var(--accent-color);
+
+    background-color: rgba(8, 22, 37, 0.5);
 }
 
-/* ---------- MOBILE FEEDBACK & ABOUT ---------- */
+.feedback-note strong {
+    color: var(--text-color);
+}
+
+
+/* ---------- MOBILE ---------- */
 
 @media (max-width: 640px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero .title-block {
+        font-size: 0.68rem;
+    }
 
     .feedback-section,
     .about-section {
@@ -659,8 +775,13 @@ button:hover {
         font-size: 1.4rem;
     }
 
-    .feedback-form button {
-        max-width: none;
+}
+
+@media (max-width: 480px) {
+
+    .row {
+        flex-direction: column;
+        gap: 0;
     }
 
 }
