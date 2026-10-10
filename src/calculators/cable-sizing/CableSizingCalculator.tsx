@@ -109,7 +109,7 @@ export function CableSizingCalculator() {
       {status && (
         <div className="results active">
           <label>Results</label>
-          <div className="result-box">
+          <div className={`result-box ${status === 'pass' ? 'result-success' : 'result-danger'}`} role="status" aria-live="polite">
             {status === 'pass' && result ? (
               <>
                 <div className="result-item"><span>Minimum Cross-Section</span><span className="result-value">{result.section} mm²</span></div>

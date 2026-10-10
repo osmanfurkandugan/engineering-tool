@@ -16,3 +16,8 @@ export function validatePowerFactor(value: number | string | undefined | null): 
   const parsed = parseNumber(value);
   return Number.isFinite(parsed) && parsed >= 0.1 && parsed <= 1;
 }
+
+export function validateEfficiency(value: number | string | undefined | null): boolean {
+  const parsed = parseNumber(value);
+  return Number.isFinite(parsed) && parsed > 0 && parsed <= 100;
+}

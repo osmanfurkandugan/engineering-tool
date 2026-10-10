@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { CalculatorRouteRenderer } from './components/CalculatorRouteRenderer';
-import { calculatorCatalog } from './shared/calculator-registry';
+import { calculatorCatalog } from './calculators/registry';
 
 function getPathFromLocation() {
   if (typeof window === 'undefined') return '/';
@@ -10,7 +10,7 @@ function getPathFromLocation() {
 export default function App() {
   const path = useMemo(() => getPathFromLocation(), []);
 
-  if (path === '/voltage-drop' || path === '/cable-sizing' || path === '/load-current') {
+  if (path !== '/') {
     return <CalculatorRouteRenderer path={path} />;
   }
 
@@ -47,17 +47,28 @@ export default function App() {
         </div>
 
         <div className="tool-grid">
-          {calculatorCatalog.map((tool) => (
-            <div key={tool.id} className={`tool-card ${tool.status === 'coming-soon' ? 'tool-card-coming-soon' : ''}`}>
-              <span className="icon">{tool.icon}</span>
-              <h3>{tool.name}</h3>
-              <p>{tool.description}</p>
-              <span className={`tag ${tool.status === 'coming-soon' ? 'tag-muted' : ''}`}>
-                {tool.status === 'live' ? 'IEC · LIVE' : 'COMING SOON'}
-              </span>
-              {tool.status === 'live' && <a className="tool-card-link" href={tool.route}>Open calculator</a>}
-            </div>
-          ))}
+          {calculatorCatalog.map((tool) => {
+            const cardContent = (
+              <>
+                <span className="icon">{tool.icon}</span>
+                <h3>{tool.name}</h3>
+                <p>{tool.description}</p>
+                <span className={`tag ${tool.status === 'coming-soon' ? 'tag-muted' : ''}`}>
+                  {tool.status === 'live' ? 'IEC · LIVE' : 'COMING SOON'}
+                </span>
+              </>
+            );
+
+            return tool.status === 'live' ? (
+              <a key={tool.id} className="tool-card" href={tool.route}>
+                {cardContent}
+              </a>
+            ) : (
+              <div key={tool.id} className="tool-card tool-card-coming-soon">
+                {cardContent}
+              </div>
+            );
+          })}
         </div>
       </div>
 

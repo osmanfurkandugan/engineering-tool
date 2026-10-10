@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { CalculatorShell } from '../../components/CalculatorShell';
-import { isPositiveNumber, validatePowerFactor } from '../../shared/validation';
+import { isPositiveNumber, validateEfficiency, validatePowerFactor } from '../../shared/validation';
 import type { SystemType, VoltageDropInputs } from '../../types';
 import { currentFromPower, findRecommendedSize, runCalculation } from './engine';
 
@@ -14,7 +14,7 @@ const defaultInputs: VoltageDropInputs = {
   material: 'Cu',
   sectionMm2: 16,
   tempC: 20,
-  x: 0,
+  reactanceOhmsPerKm: 0,
   cosPhi: 0.8,
 };
 
@@ -55,6 +55,12 @@ export function VoltageDropCalculator() {
     const voltage = Number(form.voltage);
     const lengthM = Number(form.lengthM);
     const section = sectionSelect === 'custom' ? Number(customSection) : Number(sectionSelect);
+
+    if (inputMode === 'power' && !validateEfficiency(efficiency)) {
+      alert('Efficiency must be greater than 0% and no more than 100%.');
+      return;
+    }
+
     const currentValue = inputMode === 'current' ? Number(form.current) : computeCurrent();
 
     if (!isPositiveNumber(voltage) || !isPositiveNumber(lengthM) || !isPositiveNumber(section) || !isPositiveNumber(currentValue)) {
@@ -71,7 +77,7 @@ export function VoltageDropCalculator() {
       ...form,
       current: currentValue,
       sectionMm2: section,
-      x: Number(form.x),
+      reactanceOhmsPerKm: Number(form.reactanceOhmsPerKm),
     };
 
     const calculated = runCalculation(nextInputs);
@@ -84,6 +90,12 @@ export function VoltageDropCalculator() {
     const voltage = Number(form.voltage);
     const lengthM = Number(form.lengthM);
     const section = sectionSelect === 'custom' ? Number(customSection) : Number(sectionSelect);
+
+    if (inputMode === 'power' && !validateEfficiency(efficiency)) {
+      alert('Efficiency must be greater than 0% and no more than 100%.');
+      return;
+    }
+
     const currentValue = inputMode === 'current' ? Number(form.current) : computeCurrent();
 
     if (!isPositiveNumber(voltage) || !isPositiveNumber(lengthM) || !isPositiveNumber(section) || !isPositiveNumber(currentValue)) {
@@ -95,7 +107,7 @@ export function VoltageDropCalculator() {
       ...form,
       current: currentValue,
       sectionMm2: section,
-      x: Number(form.x),
+      reactanceOhmsPerKm: Number(form.reactanceOhmsPerKm),
       material: form.material,
     };
 
@@ -252,7 +264,7 @@ export function VoltageDropCalculator() {
                 <div className="form-group">
                   <label>Efficiency</label>
                   <div className="input-wrapper">
-                    <input type="number" value={efficiency} onChange={(e) => setEfficiency(Number(e.target.value))} />
+                    <input type="number" value={efficiency} min={0.1} max={100} step={0.1} onChange={(e) => setEfficiency(Number(e.target.value))} />
                     <span className="unit">%</span>
                   </div>
                 </div>
@@ -269,7 +281,7 @@ export function VoltageDropCalculator() {
                   <div className="form-group">
                     <label>Cable Reactance (X)</label>
                     <div className="input-wrapper">
-                      <input type="number" value={form.x} step={0.01} onChange={(e) => updateForm('x', Number(e.target.value))} />
+                      <input type="number" value={form.reactanceOhmsPerKm} step={0.01} onChange={(e) => updateForm('reactanceOhmsPerKm', Number(e.target.value))} />
                       <span className="unit">Ω/km</span>
                     </div>
                   </div>
@@ -294,7 +306,7 @@ export function VoltageDropCalculator() {
       {result && (
         <div className="results active">
           <label>Results</label>
-          <div className="result-box">
+          <div className={`result-box ${status === 'pass' ? 'result-success' : 'result-danger'}`} role="status" aria-live="polite">
             <div className="result-item"><span>Voltage Drop (ΔU)</span><span className="result-value">{formatNumber(result.deltaU)} V</span></div>
             <div className="result-item"><span>Voltage Drop (%)</span><span className="result-value">{formatNumber(result.percent)} %</span></div>
             <div className="result-item"><span>Starting Voltage</span><span className="result-value">{formatNumber(result.startVoltage)} V</span></div>

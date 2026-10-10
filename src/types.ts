@@ -1,14 +1,5 @@
 export type SystemType = 'DC' | '1' | '3';
 
-export interface CalculatorDefinition {
-  id: string;
-  name: string;
-  description: string;
-  icon: string;
-  status: 'live' | 'coming-soon';
-  route: string;
-}
-
 export interface VoltageDropInputs {
   system: SystemType;
   voltage: number;
@@ -17,7 +8,7 @@ export interface VoltageDropInputs {
   material: 'Cu' | 'Al';
   sectionMm2: number;
   tempC: number;
-  x: number;
+  reactanceOhmsPerKm: number;
   cosPhi: number | null;
 }
 

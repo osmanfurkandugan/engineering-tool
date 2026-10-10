@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CalculatorShell } from '../../components/CalculatorShell';
-import { isPositiveNumber, validatePowerFactor } from '../../shared/validation';
+import { isPositiveNumber, validateEfficiency, validatePowerFactor } from '../../shared/validation';
 import { calculateLoadCurrent } from './engine';
 
 export function LoadCurrentCalculator() {
@@ -14,6 +14,7 @@ export function LoadCurrentCalculator() {
   });
 
   const [result, setResult] = useState<{ current: number; inputPowerKw: number; suggestedRating: number } | null>(null);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleCalculate = () => {
     const powerValue = Number(form.power);
@@ -21,8 +22,9 @@ export function LoadCurrentCalculator() {
     const cosPhi = Number(form.cosPhi);
     const efficiency = Number(form.efficiency);
 
-    if (!isPositiveNumber(powerValue) || !isPositiveNumber(voltage) || !validatePowerFactor(cosPhi) || !isPositiveNumber(efficiency)) {
-      alert('Please enter valid values in all fields.');
+    if (!isPositiveNumber(powerValue) || !isPositiveNumber(voltage) || !validatePowerFactor(cosPhi) || !validateEfficiency(efficiency)) {
+      setResult(null);
+      setValidationError('Check the entered values. Power and voltage must be positive, power factor must be 0.1-1, and efficiency must be above 0% up to 100%.');
       return;
     }
 
@@ -36,10 +38,12 @@ export function LoadCurrentCalculator() {
     });
 
     if (!computed) {
-      alert('Please enter valid values in all fields.');
+      setResult(null);
+      setValidationError('The entered values could not be calculated. Review the inputs and try again.');
       return;
     }
 
+    setValidationError(null);
     setResult(computed);
   };
 
@@ -48,7 +52,7 @@ export function LoadCurrentCalculator() {
       <div className="form-section">
         <div className="row">
           <div className="form-group">
-            <label>Power Rating</label>
+            <label>Motor Output Power</label>
             <input type="number" value={form.power} onChange={(e) => setForm((prev) => ({ ...prev, power: Number(e.target.value) }))} />
           </div>
           <div className="form-group">
@@ -81,20 +85,23 @@ export function LoadCurrentCalculator() {
           </div>
           <div className="form-group">
             <label>Efficiency (%)</label>
-            <input type="number" value={form.efficiency} step={0.1} min={1} max={100} onChange={(e) => setForm((prev) => ({ ...prev, efficiency: Number(e.target.value) }))} />
+            <input type="number" value={form.efficiency} step={0.1} min={0.1} max={100} onChange={(e) => setForm((prev) => ({ ...prev, efficiency: Number(e.target.value) }))} />
           </div>
         </div>
 
         <button type="button" onClick={handleCalculate}>Calculate</button>
       </div>
 
+      {validationError && <div className="form-alert" role="alert">{validationError}</div>}
+
       {result && (
         <div className="results active">
           <label>Results</label>
-          <div className="result-box">
+          <div className="result-box result-success" role="status" aria-live="polite">
             <div className="result-item"><span>Full Load Current</span><span className="result-value">{result.current.toFixed(2)} A</span></div>
             <div className="result-item"><span>Electrical Input Power</span><span className="result-value">{result.inputPowerKw.toFixed(2)} kW</span></div>
             <div className="result-item"><span>Suggested Device Rating (125%)</span><span className="result-value">{result.suggestedRating.toFixed(2)} A</span></div>
+            <p className="result-note">125% is an indicative reference only, not a protective-device selection.</p>
           </div>
         </div>
       )}

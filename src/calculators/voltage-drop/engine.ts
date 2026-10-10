@@ -18,12 +18,13 @@ export function currentFromPower(system: SystemType, powerWatts: number, voltage
   return powerWatts / (Math.sqrt(3) * voltage * (cosPhi ?? 1) * eta);
 }
 
-export function calcVoltageDrop({ system, current, lengthM, r, x, cosPhi }: { system: SystemType; current: number; lengthM: number; r: number; x: number; cosPhi: number | null; }) {
+export function calcVoltageDrop({ system, current, lengthM, r, reactanceOhmsPerKm, cosPhi }: { system: SystemType; current: number; lengthM: number; r: number; reactanceOhmsPerKm: number; cosPhi: number | null; }) {
   const sinPhi = cosPhi !== null ? Math.sqrt(Math.max(0, 1 - cosPhi * cosPhi)) : 0;
+  const reactanceOhmsPerMetre = reactanceOhmsPerKm / 1000;
 
   if (system === 'DC') return 2 * current * r * lengthM;
-  if (system === '1') return 2 * current * lengthM * (r * (cosPhi ?? 1) + x * sinPhi);
-  return Math.sqrt(3) * current * lengthM * (r * (cosPhi ?? 1) + x * sinPhi);
+  if (system === '1') return 2 * current * lengthM * (r * (cosPhi ?? 1) + reactanceOhmsPerMetre * sinPhi);
+  return Math.sqrt(3) * current * lengthM * (r * (cosPhi ?? 1) + reactanceOhmsPerMetre * sinPhi);
 }
 
 export function calcDisplayResistance(system: SystemType, r: number, lengthM: number) {
@@ -37,9 +38,9 @@ export function calcPowerLoss(system: SystemType, current: number, r: number, le
 }
 
 export function runCalculation(inputs: VoltageDropInputs): CalculationResult {
-  const { system, voltage, current, lengthM, material, sectionMm2, tempC, x, cosPhi } = inputs;
+  const { system, voltage, current, lengthM, material, sectionMm2, tempC, reactanceOhmsPerKm, cosPhi } = inputs;
   const r = resistancePerMetre(material, sectionMm2, tempC);
-  const deltaU = calcVoltageDrop({ system, current, lengthM, r, x, cosPhi });
+  const deltaU = calcVoltageDrop({ system, current, lengthM, r, reactanceOhmsPerKm, cosPhi });
   const percent = (deltaU / voltage) * 100;
   const finalVoltage = voltage - deltaU;
   const resistance = calcDisplayResistance(system, r, lengthM);
