@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { CalculatorRouteRenderer } from './components/CalculatorRouteRenderer';
+import { GiscusComments } from './components/GiscusComments';
 import { calculatorCatalog } from './calculators/registry';
 
 function getPathFromLocation() {
@@ -74,17 +75,18 @@ export default function App() {
 
       <section className="about-section" id="about">
         <span className="section-label">ABOUT THE PROJECT</span>
-        <h2>Built for Practical Engineering</h2>
-        <p>Electrical Tool is a growing collection of practical calculators and tools designed for electrical engineers, technicians, students, and anyone working with electrical systems.</p>
-        <p>Our goal is simple: to make engineering calculations faster, clearer, and more accessible.</p>
+        <h2>Accessible and Educational Engineering Tools</h2>
+        <p>This project is currently under development. Calculations may contain errors; please independently verify all results.</p>
+        <p>Our goal is to make the calculation and modeling tools needed in electrical engineering and related fields accessible, flexible, and educational.</p>
       </section>
 
       <section className="feedback-section" id="feedback">
         <div className="feedback-header">
           <span className="section-label">COMMUNITY INPUT</span>
           <h2>Help Us Improve</h2>
-          <p>Your feedback matters to us. Have an idea for a new calculator, found an error, or have a suggestion for improving an existing tool?</p>
+          <p>Have an idea for a new calculator, spotted a possible issue, or found a way to make a tool clearer? Leave a comment below. Your feedback helps us prioritize improvements and shape future tools. When reporting a calculation issue, please include the calculator name and the inputs you used.</p>
         </div>
+        <GiscusComments />
       </section>
     </div>
   );

@@ -11,10 +11,7 @@ describe('calculator registry', () => {
     }
   });
 
-  it('keeps coming-soon routes discoverable without a component', () => {
-    const comingSoon = findCalculatorByRoute('/power-factor');
-
-    expect(comingSoon?.status).toBe('coming-soon');
-    expect(comingSoon?.component).toBeNull();
+  it('returns no entry for unknown routes', () => {
+    expect(findCalculatorByRoute('/not-a-calculator')).toBeUndefined();
   });
 });

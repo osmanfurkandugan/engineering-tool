@@ -129,6 +129,7 @@ button:hover { transform: translateY(-1px); background: var(--accent-hover); box
 .form-alert, .recommendation-box { margin-top: 12px; padding: 12px 14px; border: 1px solid rgba(255, 176, 46, 0.4); border-left: 3px solid var(--accent-color); border-radius: 4px; background: rgba(255, 176, 46, 0.08); color: #ffd18a; font-size: 0.83rem; line-height: 1.5; }
 .recommendation-box { margin-top: 18px; }
 .about-section, .feedback-section { width: min(100% - 48px, 1180px); margin: 18px auto 0; padding: 30px; border: 1px solid var(--border-color); border-radius: 5px; background: rgba(25, 30, 36, 0.82); }
+.giscus { min-width: 0; margin-top: 24px; }
 .section-label { display: block; margin-bottom: 10px; color: var(--accent-color); font: 0.67rem var(--font-mono); text-transform: uppercase; }
 .about-section h2, .feedback-section h2 { margin-bottom: 12px; font: 700 1.5rem var(--font-display); }
 .about-section p, .feedback-header p { max-width: 760px; margin-bottom: 14px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }

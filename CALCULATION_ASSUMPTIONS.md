@@ -29,6 +29,12 @@ These calculators are preliminary engineering aids. Their results do not replace
 - The voltage factor and peak-factor equation are IEC 60909-style inputs/equations, but this implementation is a simplified estimate, not a verified IEC 60909 study or declaration of compliance.
 - Transformer correction factors, motor/generator contribution, parallel transformers, frequency-dependent effects, arc impedance, DC-component decay, thermal equivalent current, and protective-device coordination are not modelled. Validate source data and results against the applicable standard, local rules, and equipment manufacturers before design decisions.
 
+## Power factor correction
+
+- Required capacitor-bank reactive power is estimated from constant active power using `Qc = P × (tan(acos(PF_initial)) - tan(acos(PF_target)))`.
+- Line current before and after correction assumes balanced sinusoidal load, the entered line voltage, unchanged active power, and no material voltage change caused by the capacitor bank.
+- The result is a total kvar estimate only. It does not select capacitor steps, switching devices, detuning reactors, capacitor voltage ratings, or protection. Harmonics and resonance must be assessed before installing a bank.
+
 ## Tests
 
 Engine tests check implemented equations, unit conversion, and selected table behavior. They do not independently certify source data or establish standards compliance.

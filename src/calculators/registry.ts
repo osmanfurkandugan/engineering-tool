@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 import { CableSizingCalculator } from './cable-sizing/CableSizingCalculator';
 import { LoadCurrentCalculator } from './load-current/LoadCurrentCalculator';
+import { PowerFactorCalculator } from './power-factor/PowerFactorCalculator';
 import { ShortCircuitCalculator } from './short-circuit/ShortCircuitCalculator';
 import { VoltageDropCalculator } from './voltage-drop/VoltageDropCalculator';
 
@@ -56,11 +57,11 @@ export const calculatorCatalog: CalculatorMeta[] = [
 	{
 		id: 'power-factor',
 		name: 'Power Factor Correction',
-		description: 'Calculates capacitor sizing for reactive power compensation.',
+		description: 'Estimates capacitor-bank kvar and current reduction for a target power factor.',
 		icon: '📐',
-		status: 'coming-soon',
+		status: 'live',
 		route: '/power-factor',
-		component: null,
+		component: PowerFactorCalculator,
 	},
 ];
 

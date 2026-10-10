@@ -8,6 +8,7 @@ Free electrical engineering calculators built with React, TypeScript, and Vite.
 - Cable sizing
 - Load current
 - Three-phase short-circuit current estimate
+- Power factor correction
 
 ## Development
 
